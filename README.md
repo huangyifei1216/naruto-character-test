@@ -1,1 +1,25 @@
-IyDlv43ogIXkurrmoLzop5LoibLmtYvor5UKCuS4gOS4quWPr+eLrOeri+mDqOe9sueahOe6r+mdmeaAgeenu+WKqOerr+a1i+ivlemhte+8mjI0IOmBk+eOsOS7o+eUn+a0u+aDheWig+mimO+8jOaMieWLh+awlOOAgee+gee7iuOAgea0nuWvn+OAgemHjuW/g+OAgeiHqueUseOAgeWFseaDheOAgeWFi+WItuOAgeebtOiniSA4IOS4que7tOW6pu+8jOWMuemFjSAxMiDnp43jgIrngavlvbHlv43ogIXjgIvop5LoibLljp/lnovvvIzlubbnlJ/miJDor6bnu4bnu5PmnpzkuI7lj6/kv53lrZjnmoTliIbkuqvmtbfmiqXjgIIKCiMjIOacrOWcsOi/kOihjAoKYGBgYmFzaApweXRob24zIC1tIGh0dHAuc2VydmVyIDg3ODkKYGBgCgrmiZPlvIAgYGh0dHA6Ly9sb2NhbGhvc3Q6ODc4OWDjgILmjojmnYPnoIHvvJpgeWxiMTIzYOOAggoKIyMg5Lqn5ZOB57uT5p6ECgotIOaOiOadg+WFpeWPo++8muS/neeVmei9u+mHj+aOiOadg+mXqOanm++8jOW9k+WJjeaOiOadg+eggeS4uiBgeWxiMTIzYOOAggotIOa1i+ivlemmlumhte+8muWKqOeUu+eJh+mjjuagvOeahOinkuiJsuS4u+inhuinieOAgTI0IOmimOOAgee6piAzIOWIhumSn+OAgTEyIOenjee7k+aenOOAggotIOetlOmimOmhte+8mueOsOS7o+eUn+a0u+aDheWig+mimO+8jOmAieaLqeWQjuiHquWKqOi/m+WFpeS4i+S4gOmimOOAggotIOe7k+aenOmhte+8muWFq+e7tOmbt+i+vuWbvuOAgeWJjeS6lOinkuiJsuWFieiwseOAgeaguOW/g+S7t+WAvOS4juWFs+mUruWKqOacuuOAgeS4u+S6uuagvOWFreauteWPmeS6i+aKpeWRiuOAgeesrOS6jOS6uuagvOWujOaVtOWJr+aKpeWRiuOAgeeOsOWunuihjOWKqOW7uuiuruS4juWIhuS6q+a1t+aKpeOAggotIOinkuiJsuinhuinie+8mue7n+S4gOeahCAyRCDliqjnlLsv6LWb55KQ55KQ6aOO5qC85Y6f5Yib55Sf5oiQ6LWE5Lqn77yM5LiN5L2/55So55yf5Lq65Ymn54Wn44CCCgojIyDorqHliIbor7TmmI4KCuavj+S4qumAiemhueS8muWvuSAy4oCTMyDkuKrnu7TluqbkuqfnlJ/mnYPph43jgILns7vnu5/lhYjmjInpopjlupPlnYflgLzlkozmoIflh4blt67moIflh4bljJbnlKjmiLfnlLvlg4/vvIzlho3miorop5LoibIgcHJvZmlsZSDovazmiJDnm7jlr7nlgY/lpb3lkJHph4/vvIzpgJDpopjorqHnrpfnlKjmiLfpgInmi6nkuI7op5LoibLlgY/lpb3nmoTkurLlkozluqbjgILmnIDpq5jogIXmmK/kuLvnu5PmnpzvvIznrKzkuozlkI3mmK/pmpDol4/kurrmoLzjgIIKCj4g5pys5rWL6K+V5piv6KeS6Imy5Y6f5Z6L5aix5LmQ5rWL6K+E77yM5LiN5piv5b+D55CG6K+K5pat44CC6KeS6Imy5Y+K5LiW55WM6KeC55u45YWz5p2D5Yip5b2S5Y6f5p2D5Yip5pa55omA5pyJ77yb5pys6aG555uu5Li66Z2e5a6Y5pa554us56uL5Yib5L2c44CCCg==
+# 忍者人格角色测试
+
+一个可独立部署的纯静态移动端测试页：24 道现代生活情境题，按勇气、羁绊、洞察、野心、自由、共情、克制、直觉 8 个维度，匹配 12 种《火影忍者》角色原型，并生成详细结果与可保存的分享海报。
+
+## 本地运行
+
+```bash
+python3 -m http.server 8789
+```
+
+打开 `http://localhost:8789`。授权码：`ylb123`。
+
+## 产品结构
+
+- 授权入口：保留轻量授权门槛，当前授权码为 `ylb123`。
+- 测试首页：动画片风格的角色主视觉、24 题、约 3 分钟、12 种结果。
+- 答题页：现代生活情境题，选择后自动进入下一题。
+- 结果页：八维雷达图、前五角色光谱、核心价值与关键动机、主人格六段叙事报告、第二人格完整副报告、现实行动建议与分享海报。
+- 角色视觉：统一的 2D 动画/赛璐璐风格原创生成资产，不使用真人剧照。
+
+## 计分说明
+
+每个选项会对 2–3 个维度产生权重。系统先按题库均值和标准差标准化用户画像，再把角色 profile 转成相对偏好向量，逐题计算用户选择与角色偏好的亲和度。最高者是主结果，第二名是隐藏人格。
+
+> 本测试是角色原型娱乐测评，不是心理诊断。角色及世界观相关权利归原权利方所有；本项目为非官方独立创作。

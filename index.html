@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f7f4ee">
+  <meta name="description" content="24道现代生活情境题，测出你在火影忍者世界里更接近哪位角色，并生成八维忍者人格报告。">
+  <meta property="og:title" content="你是火影忍者里的哪个角色？">
+  <meta property="og:description" content="不是测忍术：24道情境题，匹配12位角色与八维人格报告。">
+  <meta property="og:type" content="website">
+  <title>你是火影忍者里的哪个角色？</title>
+  <script>
+    try {
+      document.documentElement.classList.add(localStorage.getItem("naruto-archetype-access-v2") === "granted" ? "access-granted" : "access-locked");
+    } catch {
+      document.documentElement.classList.add("access-locked");
+    }
+  </script>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/characters/naruto-anime.png" as="image">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section class="access-gate" aria-labelledby="accessTitle">
+    <div class="access-card">
+      <div class="access-mark" aria-hidden="true">✦</div>
+      <p class="access-kicker">SHINOBI ACCESS</p>
+      <h1 id="accessTitle">开启忍者人格测试</h1>
+      <p class="access-lead">请输入内测体验码，解锁完整角色测评与八维忍者人格报告。</p>
+      <form class="access-form" id="accessForm">
+        <label class="sr-only" for="accessCode">授权码</label>
+        <input id="accessCode" class="access-input" name="accessCode" type="password" inputmode="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="输入授权码" required autofocus>
+        <button class="access-submit" type="submit">验证并进入 <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="access-message" id="accessMessage" role="alert" aria-live="polite"></p>
+    </div>
+  </section>
+  <main id="app" class="app-shell" aria-live="polite"></main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <canvas id="shareCanvas" width="1080" height="1440" hidden></canvas>
+
+  <!-- UI tokens and mobile layout adapted from Open Design's official Mobile App example (MIT). -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    (() => {
+      const accessStorageKey = "naruto-archetype-access-v2";
+      const form = document.querySelector("#accessForm");
+      const input = document.querySelector("#accessCode");
+      const message = document.querySelector("#accessMessage");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (input.value.trim().toLowerCase() !== "ylb123") {
+          message.textContent = "体验码不正确，请再试一次。";
+          input.select();
+          return;
+        }
+        try { localStorage.setItem(accessStorageKey, "granted"); } catch { /* 当前页面仍可继续使用 */ }
+        document.documentElement.classList.remove("access-locked");
+        document.documentElement.classList.add("access-granted");
+        message.textContent = "";
+      });
+    })();
+  </script>
+</body>
+</html>
