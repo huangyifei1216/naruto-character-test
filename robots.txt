@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://huangyifei1216.github.io/naruto-character-test/sitemap.xml
